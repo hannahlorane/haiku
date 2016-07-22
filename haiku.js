@@ -8,6 +8,7 @@ function readCmudictFile(file) {
   return fs.readFileSync(file).toString();
 }
 
+// populates the syllable dictionary with the words in the CMU dictionary file
 function initializeSylDict(data) {
   var lines = data.toString().split("\n"),
       lineSplit
@@ -53,6 +54,3 @@ else {
 }
 
 haiku_generator.createHaiku(form, sylDict);
-
-//module exports
-module.exports = {}

@@ -1,5 +1,5 @@
+//choses random words of the correct length from the syllable dict and prints them to the console with the correct \n
 function createHaiku(structure, dictionary) {
-  //choses random words of the correct length from the syllable dict and prints them to the console with the correct \n
   var totalSylCount = 0;
   var line = "";
   for (var w = 0; w < structure.length; w++) {
@@ -13,10 +13,12 @@ function createHaiku(structure, dictionary) {
   }
 }
 
+// Generates a random Haiku syllabic form
 function randomHaikuForm() {
   return addLine(5, addLine(7, addLine(5, [])));
 }
 
+// Adds a new line's worth of syllables to a randomly generated form
 function addLine(n, form) {
   if (n === 0) {return form;}
   else {
@@ -30,9 +32,3 @@ module.exports = {
   createHaiku: createHaiku,
   randomHaikuForm: randomHaikuForm
 }
-
-/* TODO:
-Remove weird (1) thing
-Fix the imbalance in randomHaikuForm
-Text Read-In thing
-*/
