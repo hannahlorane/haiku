@@ -13,6 +13,11 @@ function createHaiku(structure, dictionary) {
   }
 }
 
+function randomHaikuForm() {
+  return [2, 3, 2, 3, 2, 3, 2];
+}
+
 module.exports = {
-  createHaiku: createHaiku
+  createHaiku: createHaiku,
+  randomHaikuForm: randomHaikuForm
 }

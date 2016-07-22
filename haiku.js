@@ -8,7 +8,7 @@ function readCmudictFile(file) {
   return fs.readFileSync(file).toString();
 }
 
-function formatData(data) {
+function initializeSylDict(data) {
   var lines = data.toString().split("\n"),
       lineSplit
       lines.forEach(function(line) {
@@ -23,8 +23,6 @@ function formatData(data) {
       });
 }
 
-formatData(cmudictFile);
-
 //function that takes a parse and returns the number of syllables
 function syllableNumber(parse) {
   var sylNumber = 0;
@@ -34,9 +32,26 @@ function syllableNumber(parse) {
   return sylNumber;
 }
 
+initializeSylDict(cmudictFile);
 
+/* Options:
+  No arguments: haiku of form 5 / 7 / 5
+  -r: random haiku form
+  series of numbers: haiku with that form
+*/
+var form = [];
+if (process.argv.length === 2) {form = [5, 7, 5];}
+else if (process.argv[2] === "-r") {
+  form = haiku_generator.randomHaikuForm();
+}
+else {
+  for (var w = 2; w < process.argv.length; w++) {
+    form.push(+process.argv[w]);
+  }
+  console.log(form);
+}
 
-haiku_generator.createHaiku([5, 7, 5], sylDict);
+haiku_generator.createHaiku(form, sylDict);
 
 //module exports
 module.exports = {}
