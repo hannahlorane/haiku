@@ -14,10 +14,25 @@ function createHaiku(structure, dictionary) {
 }
 
 function randomHaikuForm() {
-  return [2, 3, 2, 3, 2, 3, 2];
+  return addLine(5, addLine(7, addLine(5, [])));
+}
+
+function addLine(n, form) {
+  if (n === 0) {return form;}
+  else {
+    var next = 1 + Math.floor(Math.random()*n);
+    form.push(next);
+  }
+  return addLine(n-next, form);
 }
 
 module.exports = {
   createHaiku: createHaiku,
   randomHaikuForm: randomHaikuForm
 }
+
+/* TODO:
+Remove weird (1) thing
+Fix the imbalance in randomHaikuForm
+Text Read-In thing
+*/
