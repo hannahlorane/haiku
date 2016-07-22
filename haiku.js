@@ -11,9 +11,10 @@ function readCmudictFile(file) {
 function initializeSylDict(data) {
   var lines = data.toString().split("\n"),
       lineSplit
+      var allButParens = /([A-Z]*)/;
       lines.forEach(function(line) {
         lineSplit = line.split(" ");
-        var word = lineSplit[0]
+        var word = allButParens.exec(lineSplit[0])[0];
         var parseArr = lineSplit.slice(2);
         var sylNum = syllableNumber(parseArr);
         if (Array.isArray(sylDict[sylNum])) {
